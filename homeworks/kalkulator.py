@@ -33,13 +33,12 @@ while True:
         elif choice == '3':
             print(num1, " * ", num2, " = ", multiply(num1, num2))
             break
-        else:
+        elif choice == '4':
             if num2 == 0.0:
                 print("Nie można dzielić przez 0!")
                 continue
             else:
                 print(num1, " / ", num2, " = ", divide(num1, num2))
                 break
-
     else:
         print("Błędna wartość, podaj poprawną")
