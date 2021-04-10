@@ -1,0 +1,610 @@
+{
+	"info": {
+		"_postman_id": "c885e3e9-dbbb-42dd-8385-a20d84adb424",
+		"name": "TAPS",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GET_ALL_POSTS",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"SHOULD return 100 records\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.length).to.eql(100);\r",
+							"});\r",
+							"\r",
+							"// Avarage from JMeter\r",
+							"pm.test(\"Response time is less than 152ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(152);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/posts",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"posts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET_ALL_COMMENTS",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"SHOULD return 500 records\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.length).to.eql(500);\r",
+							"});\r",
+							"\r",
+							"// Avarage from JMeter\r",
+							"pm.test(\"Response time is less than 147ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(147);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/comments",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"comments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET_POST_1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"SHOULD return userId = 1\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.userId).to.eql(1);\r",
+							"});\r",
+							"\r",
+							"// Avarage from JMeter\r",
+							"pm.test(\"Response time is less than 145ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(145);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/posts/1",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"posts",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET_COMMENT_1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"SHOULD return postId = 1\", function () {\r",
+							"    pm.expect(jsonData.postId).to.eql(1);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"SHOULD return email = Eliseo@gardner.biz\", function () {\r",
+							"    pm.expect(jsonData.email).to.eql(\"Eliseo@gardner.biz\");\r",
+							"});\r",
+							"\r",
+							"// Avarage from JMeter\r",
+							"pm.test(\"Response time is less than 143ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(143);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/comments/1",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"comments",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET_POSTS_PARAMS",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"SHOULD return 3 records\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.length).to.eql(3);\r",
+							"});\r",
+							"\r",
+							"// Avarage from JMeter\r",
+							"pm.test(\"Response time is less than 140ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(140);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/posts?id=3&id=5&id=7",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"posts"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "3"
+						},
+						{
+							"key": "id",
+							"value": "5"
+						},
+						{
+							"key": "id",
+							"value": "7"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET_COMMENTS_PARAMS",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"SHOULD return 5 records\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.length).to.eql(5);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"SHOULD return records with postId = 1 only\", function () {\r",
+							"    var comments = pm.response.json()\r",
+							"    comments.forEach(function(comment) {\r",
+							"        pm.expect(comment.postId).to.eql(1)\r",
+							"    });\r",
+							"});\r",
+							"\r",
+							"// Avarage from JMeter\r",
+							"pm.test(\"Response time is less than 140ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(140);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/comments?postId=1",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"comments"
+					],
+					"query": [
+						{
+							"key": "postId",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST_POST_1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"SHOULD return id = 101\", function () {\r",
+							"    pm.expect(jsonData.id).to.eql(101);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"SHOULD return userId = 1\", function () {\r",
+							"    pm.expect(jsonData.userId).to.eql(1);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"SHOULD return given title\", function () {\r",
+							"    pm.expect(jsonData.title).to.eql(\"POST TITLE\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"SHOULD return given body\", function () {\r",
+							"    pm.expect(jsonData.body).to.eql(\"POST BODY\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"userId\": 1,\r\n    \"title\": \"POST TITLE\",\r\n    \"body\": \"POST BODY\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/posts",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"posts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST_COMMENT_1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"SHOULD return id = 501\", function () {\r",
+							"    pm.expect(jsonData.id).to.eql(501);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"SHOULD return postId = 1\", function () {\r",
+							"    pm.expect(jsonData.postId).to.eql(1);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"SHOULD return given name\", function () {\r",
+							"    pm.expect(jsonData.name).to.eql(\"POST NAME\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"SHOULD return given email\", function () {\r",
+							"    pm.expect(jsonData.email).to.eql(\"test@test.pl\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"SHOULD return given body\", function () {\r",
+							"    pm.expect(jsonData.body).to.eql(\"POST BODY\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"postId\": 1,\r\n  \"name\": \"POST NAME\",\r\n  \"email\": \"test@test.pl\",\r\n  \"body\": \"POST BODY\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/comments",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"comments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT_POST_1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"SHOULD return id = 1\", function () {\r",
+							"    pm.expect(jsonData.id).to.eql(1);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"SHOULD return userId = 1\", function () {\r",
+							"    pm.expect(jsonData.userId).to.eql(1);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"SHOULD return given title\", function () {\r",
+							"    pm.expect(jsonData.title).to.eql(\"PUT TITLE\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"SHOULD return given body\", function () {\r",
+							"    pm.expect(jsonData.body).to.eql(\"PUT BODY\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"userId\": 1,\r\n    \"title\": \"PUT TITLE\",\r\n    \"body\": \"PUT BODY\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/posts/1",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"posts",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT_COMMENT_1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"SHOULD return id = 1\", function () {\r",
+							"    pm.expect(jsonData.id).to.eql(1);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"SHOULD return postId = 3\", function () {\r",
+							"    pm.expect(jsonData.postId).to.eql(3);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"SHOULD return given name\", function () {\r",
+							"    pm.expect(jsonData.name).to.eql(\"PUT NAME\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"SHOULD return given email\", function () {\r",
+							"    pm.expect(jsonData.email).to.eql(\"test@test.pl\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"SHOULD return given body\", function () {\r",
+							"    pm.expect(jsonData.body).to.eql(\"PUT BODY\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"postId\": 3,\r\n  \"name\": \"PUT NAME\",\r\n  \"email\": \"test@test.pl\",\r\n  \"body\": \"PUT BODY\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/comments/1",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"comments",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE_POST_1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/posts/1",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"posts",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE_COMMENT_1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/comments/1",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"comments",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"console.log(\"hello\")"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "6984783f-8fcc-4c4c-9408-4f1a6e009180",
+			"key": "url",
+			"value": "https://jsonplaceholder.typicode.com"
+		}
+	]
+}
