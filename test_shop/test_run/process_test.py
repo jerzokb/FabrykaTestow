@@ -16,6 +16,7 @@ class Tests(unittest.TestCase):
     def tearDown(self):
         self.driver.quit()
 
+#assert correct page is visible and total price is correct
     def test1_process(self):
         self.assertTrue(main_page.is_taps_logo_visible(self.driver))
         main_page.add_item_to_cart(self.driver)
@@ -23,5 +24,7 @@ class Tests(unittest.TestCase):
         self.assertTrue(cart_page.is_item_in_cart(self.driver))
         cart_page.submit_cart(self.driver)
         order_page.proper_fill_all_form_areas(self.driver)
+        price = order_page.total_price(self.driver)
         order_page.submit_order(self.driver)
         self.assertTrue(order_received_page.is_header_visible(self.driver))
+        self.assertTrue(order_received_page.is_total_price_correct(self.driver, price))

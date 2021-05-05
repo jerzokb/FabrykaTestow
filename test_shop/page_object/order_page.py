@@ -1,4 +1,5 @@
 import time
+
 from selenium.webdriver.support.select import Select
 
 from test_shop.helpers.DataGenerator import *
@@ -16,6 +17,8 @@ place_order_button = 'place_order'
 
 valid_postcode = '00-123'
 invalid_postcode = 'abc'
+
+total_order ='//*[@id="order_review"]/table/tfoot/tr[4]/td/strong/span/bdi'
 
 
 def form_add_proper_name(driver_instance):
@@ -110,3 +113,10 @@ def submit_order(driver_instance):
     time.sleep(10)
     elem = driver_instance.find_element_by_id(place_order_button)
     elem.click()
+
+
+def total_price(driver_instance):
+    wait_for_visibility_of_element_id(driver_instance, total_order)
+    elem = driver_instance.find_element_by_xpath(total_order)
+    print(elem.text)
+    return elem.text
