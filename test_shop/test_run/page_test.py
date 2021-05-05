@@ -7,7 +7,10 @@ from test_shop.page_object import main_page, login_page, my_account_page
 
 class Tests(unittest.TestCase):
     def setUp(self):
-        self.driver = webdriver.Chrome()
+        self.selenium_grid_url = 'http://192.168.178.81:8080/wd/hub'
+        self.capabilities = webdriver.DesiredCapabilities.CHROME.copy()
+        self.driver = webdriver.Remote(desired_capabilities=self.capabilities, command_executor=self.selenium_grid_url)
+        # self.driver = webdriver.Chrome()
         self.url = TestSettings.shop_url
         self.driver.get(self.url)
         self.driver.maximize_window()
